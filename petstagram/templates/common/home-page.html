@@ -1,79 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<!-- Starts Head Section -->
-<head>
-    <link rel="stylesheet"
-          href="/static/css/styles.css">
-    <link rel="icon" type="image/x-icon" href="/static/images/free-30-instagram-stories-icons23_122570.png">
-    <title>Petstagram</title>
-</head>
-<!-- End Head Section -->
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
 
-<!-- Starts Body Section -->
-<body>
-
-<!-- Starts Header Section with Navigation Bar -->
-<header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <!-- Link to Home Page -->
-                <a href="#">
-                    <img width="50px" src="/static/images/free-30-instagram-stories-icons23_122570.png" alt="img1">
-                </a>
-
-                <!-- Link to Home Page -->
-                <a class="home" href="#">
-                    <i>Petstagram</i>
-                </a>
-            </div>
-
-            <div class="nav-links">
-                <ul class="nav-group">
-                    <li class="nav-item">
-
-                        <!-- Link to Add Pet Page -->
-                        <a href="#">
-                            <i>Add Pet</i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-
-                        <!-- Link to Add Photo Page -->
-                        <a href="#">
-                            <i>Add Photo</i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-
-                        <!-- Link to Login Page -->
-                        <a href="#">
-                            <i>Login</i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-
-                        <!-- Link to Register Page -->
-                        <a href="">
-                            <i>Register</i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-
-                        <!-- Link to Profile Page -->
-                        <a href="#">
-                            <i>Profile</i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-<!-- End Header Section with Navigation Bar -->
-
-<!-- Starts Main Section -->
-<main>
     <div class="container">
         <div class="col-9">
 
@@ -81,7 +9,7 @@
             <form class="searchbar" method="post">
                 <input type="text" placeholder="Search by pet name...">
                 <button>
-                    <img src="/static/images/search.png" height="18" alt="img2">
+                    <img src="{% static 'images/search.png' %}" height="18" alt="img2">
                 </button>
             </form>
             <!-- End Searchbar Form -->
@@ -98,7 +26,7 @@
                             <div class="profilepic">
                                 <div class="profile_img">
                                     <div class="image">
-                                        <img src="/static/images/person.png" alt="img8">
+                                        <img src="{% static 'images/person.png' %}" alt="img8">
                                     </div>
                                 </div>
                             </div>
@@ -121,7 +49,7 @@
 
                 <!-- Start Pet Photo -->
                 <div class="imgBx" id="place the id of the photo here">
-                    <img src="/static/images/axolotl.jpeg" alt="post" class="cover">
+                    <img src="{% static 'images/axolotl.jpeg' %}" alt="post" class="cover">
                 </div>
                 <!-- End Pet Photo -->
 
@@ -254,7 +182,7 @@
                             <div class="profilepic">
                                 <div class="profile_img">
                                     <div class="image">
-                                        <img src="/static/images/person.png" alt="img8">
+                                        <img src="{% static 'images/person.png' %}" alt="img8">
                                     </div>
                                 </div>
                             </div>
@@ -275,7 +203,7 @@
                 </div>
                 <!-- Post image -->
                 <div class="imgBx" id="place the id of the photo here">
-                    <img src="/static/images//dog-on-bed.jpg" alt="post" class="cover">
+                    <img src="{% static 'images/dog-on-bed.jpg' %}" alt="post" class="cover">
                 </div>
                 <!-- -->
 
@@ -283,9 +211,9 @@
                     <!-- like and share buttons -->
                     <div class="actionBtns">
                         <div class="left">
-								<span class="heart">
-									<a href="like">
-										<!-- if user has liked the photo -->
+                            <span class="heart">
+                                <a href="like">
+                                    <!-- if user has liked the photo -->
                                         <svg style="color: red"
                                              xmlns="http://www.w3.org/2000/svg"
                                              width="24"
@@ -301,7 +229,7 @@
 
                                             </path>
                                         </svg>
-                                        <!-- else -->
+                                    <!-- else -->
                                         <svg aria-label="Like"
                                              color="#262626"
                                              fill="#262626"
@@ -324,14 +252,14 @@
                                                     48 25 48 17.6c0-8-6-14.5-13.4-14.5z">
                                         </path>
                                     </svg>
-								</a>
-								</span>
+                                </a>
                             </span>
+
                             <a href="share">
                                 <svg aria-label="Share Post" class="_8-yf5 " color="#262626" fill="#262626"
                                      height="24" role="img" viewBox="0 0 48 48" width="24">
                                     <path d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3
-										3.5.1 4S0 5.2.4 5.7l15.9 15.6 5.5 22.6c.1.6.6
+									    3.5.1 4S0 5.2.4 5.7l15.9 15.6 5.5 22.6c.1.6.6
 										1 1.2 1.1h.2c.5 0 1-.3
 										1.3-.7l23.2-39c.4-.4.4-1 .1-1.5zM5.2
 										6.1h35.5L18 18.7 5.2 6.1zm18.7
@@ -389,7 +317,7 @@
                             <div class="profilepic">
                                 <div class="profile_img">
                                     <div class="image">
-                                        <img src="/static/images/person.png" alt="img8">
+                                        <img src="{% static 'images/person.png' %}" alt="img8">
                                     </div>
                                 </div>
                             </div>
@@ -410,7 +338,7 @@
                 </div>
                 <!-- Post image -->
                 <div class="imgBx" id="place the id of the photo here">
-                    <img src="/static/images/dog-on-road.jpg" alt="post" class="cover">
+                    <img src="{% static 'images/dog-on-road.jpg' %}" alt="post" class="cover">
                 </div>
                 <!-- -->
 
@@ -519,16 +447,5 @@
 
         </div>
     </div>
-</main>
-<!-- End Main Section -->
 
-<!-- Start Footer Section -->
-<div class="footer">
-		<span class="footer-section">
-			© 2022 SOFTUNI WORKSHOP FOR PYTHON WEB MODULE
-		</span>
-</div>
-<!-- End Footer Section -->
-
-</body>
-</html>
+{% endblock %}
