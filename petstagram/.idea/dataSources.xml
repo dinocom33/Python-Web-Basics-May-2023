@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="petstagram@192.168.1.121" uuid="69119764-74d0-46f8-9015-b536b2df20c2">
+    <data-source source="LOCAL" name="postgres@192.168.1.121" uuid="56afeed7-e8cf-4db1-a663-21ebf7df657b">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://192.168.1.121:5432/petstagram</jdbc-url>
+      <jdbc-url>jdbc:postgresql://192.168.1.121:5432/postgres</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

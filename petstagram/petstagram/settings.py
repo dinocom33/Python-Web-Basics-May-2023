@@ -32,10 +32,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # applications
-    'accounts',
-    'photos',
-    'pets',
-    'common',
+    'petstagram.accounts',
+    'petstagram.photos',
+    'petstagram.pets',
+    'petstagram.common',
 ]
 
 MIDDLEWARE = [
@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Sofia'
 
 USE_I18N = True
 
