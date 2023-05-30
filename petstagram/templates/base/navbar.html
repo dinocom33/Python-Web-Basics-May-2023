@@ -16,7 +16,7 @@
         <div class="nav-links">
             <ul class="nav-group">
                 <li class="nav-item">
-                {% if request.user.is_authenticated %}
+{#                {% if request.user.is_authenticated %}#}
                     <!-- Link to Add Pet Page -->
                     <a href="{% url 'add pet' %}">
                         <i>Add Pet</i>
@@ -30,15 +30,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <li class="nav-item">
+
 
                     <!-- Link to Profile Page -->
                     <a href="{% url 'details user' pk=1 %}">
                         <i>Profile</i>
                     </a>
                 </li>
-                {% else %}
-                <li>
+{#                {% else %}#}
+                <li class="nav-item">
                     <!-- Link to Login Page -->
                     <a href="{% url 'login user' %}">
                         <i>Login</i>
@@ -51,7 +51,7 @@
                         <i>Register</i>
                     </a>
                 </li>
-                {% endif %}
+{#                {% endif %}#}
             </ul>
         </div>
     </div>

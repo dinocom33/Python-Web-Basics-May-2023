@@ -22,6 +22,10 @@ class Comments(models.Model):
         blank=True,
     )
 
+    class Meta:
+        ordering = ['-publication_date_time']
+        verbose_name_plural = 'Comments'
+
 
 class Like(models.Model):
     photo = models.ForeignKey(

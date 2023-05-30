@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from petstagram.common.models import Comments
+
+
+@admin.register(Comments)
+class CommentAdmin(admin.ModelAdmin):
+    pass
