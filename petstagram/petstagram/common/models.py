@@ -22,6 +22,9 @@ class Comments(models.Model):
         blank=True,
     )
 
+    def __str__(self):
+        return self.text
+
     class Meta:
         ordering = ['-publication_date_time']
         verbose_name_plural = 'Comments'
