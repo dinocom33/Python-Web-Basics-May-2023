@@ -13,3 +13,4 @@ class Users(models.Model):
 
     class Meta:
         ordering = ('username',)
+        verbose_name_plural = 'Users'
