@@ -69,7 +69,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "my_music_app",
         "USER": "root",
-        "PASSWORD": "Dinocom33",
+        "PASSWORD": "pass",
         "HOST": "192.168.1.121",
         "PORT": "5432",
     }
