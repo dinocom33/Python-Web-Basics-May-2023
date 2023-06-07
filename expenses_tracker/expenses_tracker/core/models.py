@@ -12,7 +12,9 @@ class Profile(models.Model):
         validators=(
             validators.MinLengthValidator(2),
             validate_only_alpha,
-        )
+        ),
+        verbose_name='First Name'
+
     )
 
     last_name = models.CharField(
@@ -22,7 +24,8 @@ class Profile(models.Model):
         validators=(
             validators.MinLengthValidator(2),
             validate_only_alpha,
-        )
+        ),
+        verbose_name='Last Name'
     )
 
     budget = models.FloatField(
