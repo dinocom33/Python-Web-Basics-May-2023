@@ -13,7 +13,7 @@ class Profile(models.Model):
             validators.MinLengthValidator(2),
             validate_only_alpha,
         ),
-        verbose_name='First Name'
+        verbose_name='First Name',
 
     )
 
@@ -25,7 +25,7 @@ class Profile(models.Model):
             validators.MinLengthValidator(2),
             validate_only_alpha,
         ),
-        verbose_name='Last Name'
+        verbose_name='Last Name',
     )
 
     budget = models.FloatField(
@@ -43,7 +43,8 @@ class Profile(models.Model):
         blank=True,
         validators=(
             file_size_validator,
-        )
+        ),
+        verbose_name='Profile Image',
     )
 
     @property
