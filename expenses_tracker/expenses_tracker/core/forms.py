@@ -1,3 +1,5 @@
+import os
+
 from django import forms
 
 from expenses_tracker.core.models import Profile, Expense
@@ -21,21 +23,19 @@ class ProfileEditForm(ProfileBaseForm):
     pass
 
 
-class ProfileDeleteForm(ProfileBaseForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.__set_hidden_fields()
+class ProfileDeleteForm(forms.ModelForm):
 
     def save(self, commit=True):
         if commit:
+            image_path = self.instance.profile_image.path
             Expense.objects.all().delete()
             self.instance.delete()
-
+            os.remove(image_path)
         return self.instance
 
-    def __set_hidden_fields(self):
-        for _, field in self.fields.items():
-            field.widget = forms.HiddenInput()
+    class Meta:
+        model = Profile
+        fields = ()
 
 
 class ExpenseBaseForm(forms.ModelForm):

@@ -43,6 +43,10 @@ class Profile(models.Model):
         )
     )
 
+    @property
+    def get_full_name(self):
+        return f'{self.first_name} {self.last_name}'
+
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
@@ -73,3 +77,6 @@ class Expense(models.Model):
 
     def __str__(self):
         return self.titles
+
+    class Meta:
+        ordering = ('titles', 'price')

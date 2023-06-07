@@ -21,16 +21,12 @@ def total_expenses():
 
 def index(request):
     profile = get_profile()
-    expenses = Expense.objects.all()
-    total_spent = total_expenses()
 
-    if profile:
-        if not total_spent:
-            money_left = Profile.objects.aggregate(TOTAL=Sum('budget'))['TOTAL']
-        else:
-            money_left = Profile.objects.aggregate(TOTAL=Sum('budget'))['TOTAL'] - total_expenses()
-    else:
+    if not profile:
         return redirect('create profile')
+
+    expenses = Expense.objects.all()
+    money_left = profile.budget - sum(e.price for e in expenses)
 
     context = {
         'profile': profile,
@@ -106,6 +102,7 @@ def create_profile(request):
 
     context = {
         'form': form,
+        'no_profile': True,
     }
 
     return render(request, 'common/home-no-profile.html', context)
@@ -113,18 +110,14 @@ def create_profile(request):
 
 def show_profile(request):
     profile = get_profile()
-    form = ProfileViewForm()
-    if total_expenses() is None:
-        money_left = Profile.objects.aggregate(TOTAL=Sum('budget'))['TOTAL']
-    else:
-        money_left = Profile.objects.aggregate(TOTAL=Sum('budget'))['TOTAL'] - total_expenses()
-    total_items_bought = Expense.objects.count()
+    expenses = Expense.objects.all()
+    budget_left = profile.budget - sum(e.price for e in expenses)
+    expenses_count = len(expenses)
 
     context = {
-        'form': form,
         'profile': profile,
-        'money_left': money_left,
-        'total_items_bought': total_items_bought
+        'budget_left': budget_left,
+        'expenses_count': expenses_count
     }
 
     return render(request, 'profile/profile.html', context)
@@ -148,11 +141,11 @@ def edit_profile(request):
 
 
 def delete_profile(request):
-    profile = get_profile()
+    profile = Profile.objects.get()
     if request.method == 'GET':
         form = ProfileDeleteForm(instance=profile)
     else:
-        form = ProfileDeleteForm(request.POST, instance=profile)
+        form = ProfileDeleteForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
             return redirect('index')
