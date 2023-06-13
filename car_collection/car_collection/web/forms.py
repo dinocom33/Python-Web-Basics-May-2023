@@ -36,9 +36,11 @@ class ProfileDeleteForm(forms.ModelForm):
 
     def save(self, commit=True):
         if commit:
-            image_path = self.instance.profile_image.path
+            if self.instance.image:
+                image_path = self.instance.image.path
+                os.remove(image_path)
             self.instance.delete()
-            os.remove(image_path)
+
             Car.objects.all().delete()
 
         return self.instance

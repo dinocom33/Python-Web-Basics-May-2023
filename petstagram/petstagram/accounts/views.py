@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+
+from petstagram.accounts.forms import UserRegistrationForm
 
 
 def login_user(request):
@@ -6,7 +9,18 @@ def login_user(request):
 
 
 def register_user(request):
-    return render(request, 'accounts/register-page.html')
+    form = UserRegistrationForm(request.POST)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+
+            return redirect('login user')
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'accounts/register-page.html', context=context)
 
 
 def delete_user(request, pk):

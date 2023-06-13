@@ -6,6 +6,11 @@
             {% csrf_token %}
             <div class="container">
                 <h1>Edit Game</h1>
+                {% for error in form.errors %}
+                    {% if error %}
+                        {{ error }}
+                    {% endif %}
+                {% endfor %}
 
                 {{ form }}
                 <input class="btn submit" type="submit" value="Edit Game">

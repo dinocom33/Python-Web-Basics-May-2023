@@ -23,6 +23,9 @@ class Profile(models.Model):
         blank=True,
     )
 
+    def __str__(self):
+        return self.username
+
 
 class Album(models.Model):
     POP_MUSIC = 'Pop Music'
@@ -77,6 +80,9 @@ class Album(models.Model):
             validators.MinValueValidator(0.0),
         )
     )
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         ordering = ('pk',)

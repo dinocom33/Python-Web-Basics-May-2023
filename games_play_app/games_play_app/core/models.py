@@ -40,7 +40,10 @@ class Profile(models.Model):
         return f'{self.first_name} {self.last_name}'
 
     def __str__(self):
-        return self.get_full_name()
+        if self.first_name and self.last_name:
+            return self.get_full_name()
+        else:
+            return self.email
 
 
 class Game(models.Model):
@@ -102,3 +105,6 @@ class Game(models.Model):
         null=False,
         blank=False,
     )
+
+    def __str__(self):
+        return self.title

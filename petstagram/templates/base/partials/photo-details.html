@@ -17,7 +17,7 @@
             <h3>
                 <!-- Link to User Profile Page -->
                 <a href="{% url 'details user' pk=1 %}">
-                    <!-- if user has first name and last name -->
+                    {#                     if user has first name and last name #}
                     Diyan Kalaydzhiev
                     <!-- else -->
                     <!-- show user username -->
@@ -33,9 +33,11 @@
     <!-- End User Details and Image Location -->
 
     <!-- Start Pet Photo -->
-    <div class="imgBx" id="photo-{{ photo.pk }}">
-        <img src="{% static 'images/axolotl.jpeg' %}" alt="post" class="cover">
-    </div>
+    {% if photo.photo %}
+        <div class="imgBx" id="{{ photo.pk }}">
+            <img src="{{ photo.photo.url }}" alt="post" class="cover">
+        </div>
+    {% endif %}
     <!-- End Pet Photo -->
 
     <!-- Start Like and Share Buttons -->
@@ -166,11 +168,9 @@
                 </h3>
             </div>
             <!-- Start Add Comments Form -->
-            <form method="post" action="#">
-                <label for="id_body">Body:</label>
-                <textarea name="body" cols="40" rows="10" placeholder="Add comment..." maxlength="300"
-                          required="" id="id_body"></textarea>
-                <button type="submit">Post</button>
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form }}
             </form>
             <!-- End Add Comments Form -->
 

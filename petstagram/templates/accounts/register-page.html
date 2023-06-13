@@ -10,14 +10,18 @@
             <!-- Start Register Form -->
             <form action="" method="post">
                 {% csrf_token %}
-                <input type="text" placeholder="Username">
-
-                <input type="email" placeholder="Email">
-
-                <input type="password" placeholder="Password">
-
-                <input type="password" placeholder="Repeat Password">
-
+                <label for="id_first_name">First name:</label>
+                {{ form.first_name }}
+                <label for="id_last_name">Last name:</label>
+                {{ form.last_name }}
+                <label for="id_email">Email:</label>
+                {{ form.email }}
+                <label for="id_username">Username:</label>
+                {{ form.username }}
+                <label for="id_password1">Password:</label>
+                {{ form.password1 }}
+                <label for="id_password2">Confirm password:</label>
+                {{ form.password2 }}
                 <!-- Register Button -->
                 <button type="submit">Register</button>
             </form>
