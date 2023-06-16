@@ -40,6 +40,7 @@ class DeleteProfileForm(forms.ModelForm):
         model = Profile
         fields = ()
 
+
 class BaseGameForm(forms.ModelForm):
     class Meta:
         model = Game

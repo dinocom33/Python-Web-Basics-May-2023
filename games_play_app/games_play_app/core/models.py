@@ -1,6 +1,8 @@
 from django.core import validators
 from django.db import models
 
+from games_play_app.core.validators import rating_validator
+
 
 class Profile(models.Model):
     email = models.EmailField(
@@ -83,8 +85,7 @@ class Game(models.Model):
         null=False,
         blank=False,
         validators=(
-            validators.MinValueValidator(0.1),
-            validators.MaxValueValidator(5.0),
+            rating_validator,
         )
     )
 

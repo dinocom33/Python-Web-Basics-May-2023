@@ -41,7 +41,7 @@
 label,
 input,
 select,
-textarea{
+textarea {
     display: block;
     width: 100%;
     padding: 0;
@@ -70,7 +70,7 @@ input[type="number"],
 input[type="password"],
 input[type="email"],
 input[type="text"],
-input[type="url"]{
+input[type="url"] {
     background: #ecf0f3;
     padding: 20px 20px 20px 20px;
     height: 50px;
@@ -91,7 +91,7 @@ select {
 }
 
 label[for="terms"] > input,
-label[for="terms"] > select{
+label[for="terms"] > select {
     display: inline;
 }
 
@@ -144,6 +144,6 @@ textarea {
     box-shadow: inset 6px 6px 6px #c0c2c5, inset -6px -6px 6px white;
 }
 
-.errorlist{
+.errorlist {
     color: red
 }
