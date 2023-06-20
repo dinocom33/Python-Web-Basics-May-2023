@@ -20,13 +20,14 @@ def profile_details(request):
 def delete_profile(request):
     profile = Profile.objects.first()
 
-    if request.method == 'POST':
+    if request.method == 'GET':
+        form = ProfileDeleteForm(instance=profile)
+    else:
         form = ProfileDeleteForm(request.POST, instance=profile)
+
         if form.is_valid():
             form.save()
             return redirect('index')
-
-    form = ProfileDeleteForm(instance=profile)
 
     context = {
         'form': form
@@ -36,13 +37,13 @@ def delete_profile(request):
 
 
 def create_profile(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
+        form = ProfileCreateForm()
+    else:
         form = ProfileCreateForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('index')
-
-    form = ProfileCreateForm()
 
     context = {
         'form': form,

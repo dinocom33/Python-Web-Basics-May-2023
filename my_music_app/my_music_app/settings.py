@@ -72,13 +72,14 @@ WSGI_APPLICATION = 'my_music_app.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": config('DATABASE_NAME'),
-        "USER": config('DATABASE_USER'),
-        "PASSWORD": config('DATABASE_PASSWORD'),
-        "HOST": config('DATABASE_HOST'),
-        "PORT": config('DATABASE_PORT'),
+        "NAME": 'my_music_app_db',
+        "USER": 'user',
+        "PASSWORD": 'my_password',
+        "HOST": '127.0.0.1',
+        "PORT": '5432',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

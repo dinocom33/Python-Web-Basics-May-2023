@@ -5,13 +5,13 @@ from my_music_app.album.models import Album
 
 
 def add_album(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
+        form = AlbumCreateForm()
+    else:
         form = AlbumCreateForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('index')
-
-    form = AlbumCreateForm()
 
     context = {
         'form': form,
@@ -32,13 +32,15 @@ def album_details(request, pk):
 
 def edit_album(request, pk):
     album = Album.objects.filter(pk=pk).get()
-    if request.method == 'POST':
+
+    if request.method == 'GET':
+        form = AlbumEditForm(instance=album)
+    else:
         form = AlbumEditForm(request.POST, instance=album)
         if form.is_valid():
             form.save()
             return redirect('index')
 
-    form = AlbumEditForm(instance=album)
     context = {
         'form': form,
         'album': album,
@@ -50,13 +52,13 @@ def edit_album(request, pk):
 def delete_album(request, pk):
     album = Album.objects.filter(pk=pk).get()
 
-    if request.method == 'POST':
+    if request.method == 'GET':
+        form = AlbumDeleteForm(instance=album)
+    else:
         form = AlbumDeleteForm(request.POST, instance=album)
         if form.is_valid():
             form.save()
             return redirect('index')
-
-    form = AlbumDeleteForm(instance=album)
 
     context = {
         'form': form,

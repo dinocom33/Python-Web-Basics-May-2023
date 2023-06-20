@@ -9,10 +9,10 @@ class Profile(models.Model):
         max_length=15,
         null=False,
         blank=False,
-        validators=[
+        validators=(
             validators.MinLengthValidator(2),
             user_name_validator,
-        ]
+        ),
     )
 
     email = models.EmailField(
