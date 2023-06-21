@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 
-from .templatetags import get_profile
 from ..album.models import Album
 from ..user_profile.models import Profile
+from ..user_profile.forms import ProfileCreateForm
 
 
 def index(request):
@@ -10,10 +10,21 @@ def index(request):
     albums = Album.objects.all()
 
     if not profile:
-        return redirect('create profile')
+        template = 'common/home-no-profile.html'
+    else:
+        template = 'common/home-with-profile.html'
+
+    if request.method == 'GET':
+        form = ProfileCreateForm()
+    else:
+        form = ProfileCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
 
     context = {
         'albums': albums,
+        'form': form,
     }
 
-    return render(request, 'common/home-with-profile.html', context)
+    return render(request, template, context)
