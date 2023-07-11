@@ -34,19 +34,3 @@ def delete_profile(request):
     }
 
     return render(request, 'user_profile/profile-delete.html', context)
-
-
-def create_profile(request):
-    if request.method == 'GET':
-        form = ProfileCreateForm()
-    else:
-        form = ProfileCreateForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-
-    context = {
-        'form': form,
-    }
-
-    return render(request, 'common/home-no-profile.html', context)
